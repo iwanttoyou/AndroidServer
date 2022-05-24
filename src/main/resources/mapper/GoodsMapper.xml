@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" " http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="android.canteen.dao.Interface.GoodsMapper">
+    <insert id="insertOne" parameterType="goods">
+        INSERT INTO goods (wid, name, price, cost, imgURL)
+        VALUE
+            (wid = #{wid}, name = #{name}, price = #{price}, cost = #{cost}, imgURL = #{imgURL})
+    </insert>
+
+    <delete id="deleteList" parameterType="goods">
+        DELETE FROM goods WHERE IN
+        <foreach collection="list" item="item" separator="," open="(" close=")">
+            #{item.id}
+        </foreach>
+    </delete>
+
+    <update id="updateOne" parameterType="goods">
+        UPDATE goods
+        SET wid = #{wid}, name = #{name}, price = #{price}, cost = #{cost}, imgURL = #{imgURL}
+        WHERE id = #{id}
+    </update>
+
+    <select id="queryOneById" parameterType="int">
+        SELECT id, wid, name, price, cost, imgURL
+        FROM goods
+        WHERE id = #{id}
+    </select>
+
+</mapper>

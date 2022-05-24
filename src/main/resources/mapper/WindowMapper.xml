@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" " http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="android.canteen.dao.Interface.WindowMapper">
+    <insert id="insertOne" parameterType="window">
+        INSERT INTO window (cid, name) VALUE (#{cid}, #{name})
+    </insert>
+
+    <delete id="deleteByList" parameterType="int">
+        DELETE FROM window WHERE
+        <foreach collection="list" item="item" separator="," open="(" close=")">
+            #{item.id}
+        </foreach>
+    </delete>
+
+    <update id="updateOne" parameterType="window">
+        UPDATE window
+        SET cid = #{cid}, name = #{name}
+        WHERE id = #{id}
+    </update>
+
+    <select id="queryAll" resultType="window">
+        SELECT id, cid, name FROM window
+    </select>
+</mapper>
