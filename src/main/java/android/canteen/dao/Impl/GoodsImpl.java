@@ -59,4 +59,7 @@ public class GoodsImpl implements GoodsMapper {
             return session.getMapper(GoodsMapper.class).queryAll();
         }
     }
+    public void Print(){
+        System.out.println("hello word");
+    }
 }
